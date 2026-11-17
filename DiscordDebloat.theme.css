@@ -1,0 +1,32 @@
+/**
+*@name Discord Debloat
+*@author f4lenn/mactim1
+*@version 1.0.0
+*@description Hides annoying UI clutter
+*/
+
+/* Chat bar (Gift, Stickers, Apps) */
+[class*="buttons_"] > :is(
+    :has([aria-label="Send a gift"]),
+    :has([aria-label="Open sticker picker"])
+),
+div[class*="app-launcher-entrypoint"],
+
+/* Sidebar & navigation (Nitro, Shop, Quests, Discover) */
+li:has([href="/store"]),
+li:has([href="/shop"]),
+li:has([href="/quest-home"]),
+[class*="tutorialContainer"] + [class*="listItem"],
+
+/* Profile popout & top bar (Badges, Orbs, Help) */
+a[href*="support.discord.com"],
+[class*="menus_"] > [class*="menuOverlay_"]:first-child > ul > li:nth-child(3),
+[class*="menus_"] > [class*="menuOverlay_"]:first-child > ul > li:nth-child(4) {
+    display: none !important;
+}
+
+/* Remove leftover divider lines inside the profile popout */
+[class*="menus_"] > [class*="menuOverlay_"]:first-child > ul > li:nth-child(2)::after,
+[class*="menus_"] > [class*="menuOverlay_"]:first-child > ul > li:nth-child(3)::after {
+    display: none !important;
+}
